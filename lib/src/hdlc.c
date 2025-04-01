@@ -133,28 +133,47 @@ int hdlc_frame_init(hdlc_frame_t *frame)
 }
 
 //--------------------------------------------------
-void hdlc_i_frame_control_init(hdlc_control_t *control, uint8_t ns, uint8_t pf, uint8_t nr)
+int hdlc_i_frame_control_init(hdlc_control_t *control, uint8_t ns, uint8_t pf, uint8_t nr)
 {
+	if (control == NULL) {
+		ERR("[%s:%d] control == NULL\n", __func__, __LINE__);
+		return -1;
+	}
+
 	control->i_fields.res1 = 1;
 	control->i_fields.ns = ns;
 	control->i_fields.pf = pf;
 	control->i_fields.nr = nr;
+
+	return 0;
 }
 
 //--------------------------------------------------
-void hdlc_s_frame_control_init(hdlc_control_t *control, hdlc_control_s_frame_code_t s, uint8_t pf,
-			       uint8_t nr)
+int hdlc_s_frame_control_init(hdlc_control_t *control, hdlc_control_s_frame_code_t s, uint8_t pf,
+			      uint8_t nr)
 {
+	if (control == NULL) {
+		ERR("[%s:%d] control == NULL\n", __func__, __LINE__);
+		return -1;
+	}
+
 	control->s_fields.res1 = 1;
 	control->s_fields.res2 = 0;
 	control->s_fields.s = s;
 	control->s_fields.pf = pf;
 	control->s_fields.nr = nr;
+
+	return 0;
 }
 
 //--------------------------------------------------
 int hdlc_u_frame_control_init(hdlc_control_t *control, hdlc_control_u_frame_code_t m, uint8_t pf)
 {
+	if (control == NULL) {
+		ERR("[%s:%d] control == NULL\n", __func__, __LINE__);
+		return -1;
+	}
+
 	control->u_fields.res1 = 1;
 	control->u_fields.res2 = 1;
 	control->u_fields.pf = pf;

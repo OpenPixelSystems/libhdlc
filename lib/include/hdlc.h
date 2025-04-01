@@ -81,9 +81,10 @@ typedef struct {
 
 int hdlc_frame_init(hdlc_frame_t *frame);
 
-void hdlc_i_frame_control_init(hdlc_control_t *control, uint8_t ns, uint8_t pf, uint8_t nr);
-void hdlc_s_frame_control_init(hdlc_control_t *control, hdlc_control_s_frame_code_t s, uint8_t pf,
-			       uint8_t nr);
+int hdlc_i_frame_control_init(hdlc_control_t *control, uint8_t ns, uint8_t pf, uint8_t nr);
+
+int hdlc_s_frame_control_init(hdlc_control_t *control, hdlc_control_s_frame_code_t s, uint8_t pf,
+			      uint8_t nr);
 int hdlc_u_frame_control_init(hdlc_control_t *control, hdlc_control_u_frame_code_t m, uint8_t pf);
 
 int hdlc_encode(const hdlc_frame_t *frame, uint8_t *data, int len);
