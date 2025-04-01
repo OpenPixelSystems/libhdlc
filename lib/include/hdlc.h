@@ -63,7 +63,6 @@ typedef enum {
 } hdlc_control_u_frame_code_t;
 
 typedef enum {
-	HDLC_STATE_IDLE,
 	HDLC_STATE_START_FLAG,
 	HDLC_STATE_ADDRESS,
 	HDLC_STATE_CONTROL,

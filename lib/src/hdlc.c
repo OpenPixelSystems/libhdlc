@@ -318,7 +318,7 @@ int hdlc_decode(hdlc_frame_t *frame, uint8_t *data, int len)
 		return -1;
 	}
 
-	hdlc_state_t state = HDLC_STATE_IDLE;
+	hdlc_state_t state = HDLC_STATE_START_FLAG;
 
 	int result = 0;
 
@@ -328,7 +328,7 @@ int hdlc_decode(hdlc_frame_t *frame, uint8_t *data, int len)
 		const int left = len - i;
 
 		switch (state) {
-		case HDLC_STATE_IDLE:
+		case HDLC_STATE_START_FLAG:
 			if (data[i] == HDLC_DELIMITER) {
 				state = HDLC_STATE_ADDRESS;
 			} else {
